@@ -10,12 +10,13 @@ optparser.add_option("-d", "--data", dest="train", default="data/hansards", help
 optparser.add_option("-e", "--english", dest="english", default="e", help="Suffix of English filename (default=e)")
 optparser.add_option("-f", "--french", dest="french", default="f", help="Suffix of French filename (default=f)")
 optparser.add_option("-n", "--num_sentences", dest="num_sents", default=sys.maxint, type="int", help="Number of sentences to use for training and alignment")
-#optparser.add_option("-t", "--translation_table",dest="p_t_t",help="Use pickled translation table output by Model 1")
+optparser.add_option("-t", "--translation_table",dest="p_t_t",help="Use pickled translation table output by Model 1")
 (opts, _) = optparser.parse_args()
 f_data = "%s.%s" % (opts.train, opts.french)
 e_data = "%s.%s" % (opts.train, opts.english)
 
-sys.stderr.write("Training with IBM Model 1...\n")
+sys.stderr.write("Training with IBM Model 2...\n")
+sys.exit('Program aparently still under construction. Exiting now...')
 bitext = [[sentence.strip().split() for sentence in pair] for pair in zip(open(f_data), open(e_data))[:opts.num_sents]]
 f_count = defaultdict(float)
 e_count = defaultdict(int)
@@ -26,6 +27,7 @@ t = pickle.load(open('my_first_pickle.pi','r'))
 a_count = defaultdict(float)
 a_total = defaultdict(float)
 a = defaultdict(float)
+
 
 ## This is one way to initialize t(e|f)
 """
